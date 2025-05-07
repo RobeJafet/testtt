@@ -8,7 +8,7 @@ export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
                 <div className="bg-black h-[1px] w-full opacity-30"></div>
                 <div className="flex -mx-4 flex-wrap pt-red">
                     <div className="w-full md:w-5/12 lg:w-6/12 px-4 pb-14 md:pb-0">
-                        <Link href="#">
+                        <Link href="./">
                             <h1>Studio Test</h1>
                         </Link>
                         <p>2024 Studio Test</p>
@@ -17,7 +17,9 @@ export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
                         {
                             footer.social_links && footer.social_links.map((socialLink, index) => (
                                 <SingleLink key={index} {...socialLink}>
-                                    {socialLink.label}
+                                    <p className='scramble-hover'>
+                                        {socialLink.label}
+                                    </p>
                                 </SingleLink>
                             ))
                         }
@@ -26,7 +28,9 @@ export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
                         {
                             footer.mail_contact && (
                                 <SingleLink {...footer.mail_contact}>
-                                    {footer.mail_contact.label}
+                                    <p className='scramble-hover'>
+                                        {footer.mail_contact.label}
+                                    </p>
                                 </SingleLink>
                             )
                         }
@@ -38,7 +42,9 @@ export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
                         {
                             footer.sitemap && footer.sitemap.map((linkSitemap, index) => (
                                 <SingleLink key={index} {...linkSitemap}>
-                                    {linkSitemap.label}
+                                    <p className='scramble-hover'>
+                                        {linkSitemap.label}
+                                    </p>
                                 </SingleLink>
                             ))
                         }
@@ -47,7 +53,9 @@ export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
                         {
                             footer.terms_link && (
                                 <SingleLink {...footer.terms_link}>
-                                    {footer.terms_link.label}
+                                    <p className='scramble-hover'>
+                                        {footer.terms_link.label}
+                                    </p>
                                 </SingleLink>
                             )
                         }

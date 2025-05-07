@@ -8,7 +8,7 @@ export const POST_SLUG = groq`
 
 
 export const POST_QUERY = groq`
-  *[_type == "project.post" && slug.current == $slug][0]{
+  *[_type == "project.post" && slug.current == $slug && language==$lang ][0]{
     title,
     excerpt,
     year,

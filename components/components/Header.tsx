@@ -14,7 +14,9 @@ export default function Header({navigation, lang}: {navigation: Sanity.HeaderNav
                         {
                             navigation?.map((navItem, index) => (
                                 <SingleLink key={index} {...navItem} >
-                                    {navItem.label}
+                                    <p className="scramble-hover">
+                                        {navItem.label}
+                                    </p>
                                 </SingleLink>
                             ))
                         }

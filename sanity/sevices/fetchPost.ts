@@ -22,10 +22,10 @@ export const fetchSanityPostSlugs = async (): Promise<{lang: LocalePage, slug: s
     return slugsArrays.flat();
 }
 
-export const fetchSanityPostBySlug = async ( slug: string ): Promise<Sanity.Post> => {
+export const fetchSanityPostBySlug = async ( slug: string, lang: LocalePage ): Promise<Sanity.Post> => {
     const { data } = await sanityFetch({
       query: POST_QUERY,
-      params: { slug },
+      params: { slug, lang },
     });
     return data;
 }

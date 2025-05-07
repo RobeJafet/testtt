@@ -7,7 +7,6 @@ import { generatePageMetadata } from "@/sanity/sevices/generateMetadata";
 
 export async function generateStaticParams() {
     const slugs = await fetchSanityPostSlugs();
-    console.log("slugs", slugs)
     return slugs;
 }
 export const dynamicParams = false;
@@ -17,14 +16,14 @@ type ParamsMetadata = Promise<{ lang: LocalePage; slug: string }>
 export async function generateMetadata(props: {params: ParamsMetadata}) {
     const paramsMetadata = await props.params;
     const { lang, slug } =  paramsMetadata; 
-    const post = await fetchSanityPostBySlug(slug);
+    const post = await fetchSanityPostBySlug(slug, lang);
     return generatePageMetadata({ page: post, slug, locale: lang });
 }
 
 
 export default async function Post({params}: {params: ParamsMetadata}) {
     const { slug, lang } = await params;
-    const post = await fetchSanityPostBySlug( slug );
+    const post = await fetchSanityPostBySlug( slug, lang);
     const dict = await getDictionary(lang)
 
     return (
@@ -60,7 +59,7 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 strokeLinecap="square"
                                             />
                                         </svg>
-                                        <p className="under-custom">
+                                        <p className="under-custom scramble-hover">
                                             {post.link?.label}
                                         </p>
                                     </SingleLink>
@@ -103,7 +102,7 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 strokeLinecap="square"
                                             />
                                         </svg>
-                                        <p className="under-custom">
+                                        <p className="under-custom scramble-hover">
                                             {post.link?.label}
                                         </p>
                                     </SingleLink>
