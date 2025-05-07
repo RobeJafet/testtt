@@ -31,19 +31,19 @@ export default function SingleLink({
     }
 
     function startScramble(el: HTMLElement) {
-        const originalText = originals.get(el) || el.textContent || '';
-        originals.set(el, originalText);
-      
+      const originalText = originals.get(el) || el.textContent || '';
+      originals.set(el, originalText);
+    
+      el.textContent = shuffleString(originalText);
+    
+      const interval = setInterval(() => {
         el.textContent = shuffleString(originalText);
-      
-        const interval = setInterval(() => {
-          el.textContent = shuffleString(originalText);
-        }, 100);
-        intervals.set(el, interval);
-      
-        const timeout = setTimeout(() => stopScramble(el), 500);
-        timeouts.set(el, timeout);
-      }
+      }, 100);
+      intervals.set(el, interval);
+    
+      const timeout = setTimeout(() => stopScramble(el), 500);
+      timeouts.set(el, timeout);
+    }
 
     function stopScramble(el: HTMLElement) {
       clearInterval(intervals.get(el));
@@ -52,14 +52,23 @@ export default function SingleLink({
       if (original) el.textContent = original;
     }
 
+    const startScrambleHandler: EventListener = (e) => {
+      const el = e.currentTarget as HTMLElement;
+      startScramble(el);
+    };
+    
+    const stopScrambleHandler: EventListener = (e) => {
+      const el = e.currentTarget as HTMLElement;
+      stopScramble(el);
+    };
+    
+
     elements.forEach((el) => {
       originals.set(el, el.textContent || '');
 
-      const enter = () => startScramble(el);
-      const leave = () => stopScramble(el);
-
-      el.addEventListener('mouseenter', enter);
-      el.addEventListener('mouseleave', leave);
+      
+    el.addEventListener('mouseenter', startScrambleHandler);
+    el.addEventListener('mouseleave', stopScrambleHandler);
 
       // Cleanup cuando cambie la ruta
       el.dataset.scrambleListenersAttached = 'true'; // Evitar duplicados
@@ -67,8 +76,8 @@ export default function SingleLink({
 
     return () => {
       elements.forEach((el) => {
-        el.removeEventListener('mouseenter', startScramble as any);
-        el.removeEventListener('mouseleave', stopScramble as any);
+        el.removeEventListener('mouseenter', startScrambleHandler);
+        el.removeEventListener('mouseleave', stopScrambleHandler);
       });
     };
   }, []);
