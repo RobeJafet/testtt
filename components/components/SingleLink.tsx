@@ -10,8 +10,8 @@ export default function SingleLink({
   children,
   openInNewTab,
 }: Sanity.Link) {
+  
   useEffect(() => {
-    // Solo si el dispositivo soporta hover (no touch)
     const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!supportsHover) return;
 
@@ -81,16 +81,17 @@ export default function SingleLink({
       });
     };
   }, []);
+  
 
   const linkClass = 'flex gap-4 items-center';
 
   if (linkType === 'page') {
     if (page?._type === 'home') {
-      return <Link href="/" className={linkClass}>{children}</Link>
+      return <Link href={`/${page?.language}`} className={linkClass}>{children}</Link>
     } else if (page?._type === 'project.post') {
-      return <Link href={`/projects/${page?.slug}`} className={linkClass}>{children}</Link>
+      return <Link href={`${page?.language}/projects/${page?.slug}`} className={linkClass}>{children}</Link>
     } else {
-      return <Link href={`/${page?.slug}`} className={linkClass}>{children}</Link>
+      return <Link href={`${page?.language}/${page?.slug}`} className={linkClass}>{children}</Link>
     }
   }
 

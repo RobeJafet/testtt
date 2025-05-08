@@ -90,6 +90,7 @@ declare global {
     type InternalLink = {
       _type: string;
       slug: string;
+      language: string;
     };
 
     type Link = {
@@ -121,6 +122,17 @@ declare global {
       mail_contact: Link;
       terms_link: Link;
       locations: string;
+    }
+
+    type Translation = {
+      en: {
+        slug: string;
+        type: "page" | "project.post";
+      };
+      es: {
+        slug: string;
+        type: "page" | "project.post";
+      };
     }
   }
 

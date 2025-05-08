@@ -58,15 +58,16 @@ export const heroQuery = groq`
 export const featuredProjectsQuery = groq`
   _type == "featured_projects" => {
       _type,
-      headline,
+      heading,
       projects[]{
         _key,
         description,
         project->{
-            title,
-            slug,
-            _id,
-            _type
+          title,
+          slug,
+          language,
+          _id,
+          _type
         },
         images[]{
           asset->{
@@ -91,7 +92,7 @@ export const featuredProjectsQuery = groq`
 export const studioQuery = groq`
   _type == "studio" => {
     _type,
-    headline,
+    heading,
     title,
     description,
     link {
@@ -99,7 +100,8 @@ export const studioQuery = groq`
       linkType == 'page' => {
         "page": page->{
             _type,
-            "slug": slug.current
+            "slug": slug.current,
+            language
         }
       }
     },
@@ -161,7 +163,8 @@ export const approachQuery = groq`
           linkType == 'page' => {
             "page": page->{
                 _type,
-                "slug": slug.current
+                "slug": slug.current,
+                language
             }
           }
         }

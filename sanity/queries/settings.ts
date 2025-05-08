@@ -7,7 +7,8 @@ export const HEADER_QUERY = groq`
             linkType == 'page' => {
                 "page": page->{
                     _type,
-                    "slug": slug.current
+                    "slug": slug.current,
+                    language
                 }
             }
         }
@@ -21,7 +22,8 @@ export const FOOTER_QUERY = groq`
       linkType == 'page' => {
         "page": page->{
           _type,
-          "slug": slug.current
+          "slug": slug.current,
+          language
         }
       }
     },
@@ -30,7 +32,8 @@ export const FOOTER_QUERY = groq`
       linkType == 'page' => {
         "page": page->{
           _type,
-          "slug": slug.current
+          "slug": slug.current,
+          language
         }
       }
     },
@@ -39,7 +42,8 @@ export const FOOTER_QUERY = groq`
       linkType == 'page' => {
         "page": page->{
           _type,
-          "slug": slug.current
+          "slug": slug.current,
+          language
         }
       }
     },
@@ -48,10 +52,31 @@ export const FOOTER_QUERY = groq`
       linkType == 'page' => {
         "page": page->{
           _type,
-          "slug": slug.current
+          "slug": slug.current,
+          language
         }
       }
     },
     locations
   }
 `;
+
+
+export const TRANSLATION_QUERY = groq`
+*[
+  _type == "translation.metadata" &&
+  count(schemaTypes[@ in ["page", "project.post"]]) > 0 &&
+  defined(translations[_key == "en"][0].value->slug.current) &&
+  defined(translations[_key == "es"][0].value->slug.current)
+]{
+  "en": {
+    "slug": translations[_key == "en"][0].value->slug.current,
+    "type": translations[_key == "en"][0].value->_type
+  },
+  "es": {
+    "slug": translations[_key == "es"][0].value->slug.current,
+    "type": translations[_key == "es"][0].value->_type
+  }
+}
+
+`

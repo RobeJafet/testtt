@@ -42,7 +42,6 @@ export const HOME_QUERY = groq`
       ${servicesQuery},
       ${approachQuery}
     },
-    title,
     meta_title,
     meta_description,
     noindex,

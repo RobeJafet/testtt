@@ -2,12 +2,12 @@ import Link from "next/link";
 import SingleLink from "./SingleLink";
 import LangChangeHandler from "./LangChangeHandler";
 
-export default function Header({navigation, lang}: {navigation: Sanity.HeaderNavigation, lang: LocalePage}) {
+export default function Header({navigation, lang, translations}: {navigation: Sanity.HeaderNavigation, lang: LocalePage, translations: Sanity.Translation[]}): React.ReactNode {
     return(
         <header className="mix-blend-difference fixed top-0 w-full z-10">
             <div className="container">
                 <div className="flex pt-6 md:pt-8 justify-between items-center text-white">
-                    <Link href="/">
+                    <Link href={`/${lang}`}>
                         <h1 className="text-white">Studio Test</h1>
                     </Link>
                     <div className="flex gap-8">
@@ -20,7 +20,7 @@ export default function Header({navigation, lang}: {navigation: Sanity.HeaderNav
                                 </SingleLink>
                             ))
                         }
-                        <LangChangeHandler lang={lang} /> 
+                        <LangChangeHandler lang={lang} translations={translations} /> 
                     </div>
                 </div>
             </div>

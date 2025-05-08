@@ -5,8 +5,6 @@ import SingleLink from '../components/SingleLink';
 
 export default async function FeaturedProjects(section: Section.FeaturedProjectsProps) {
 
-   
-
     return(
         <section>
             <div className="container pt-pink text-black">
@@ -21,13 +19,14 @@ export default async function FeaturedProjects(section: Section.FeaturedProjects
                     const projectPage: Sanity.InternalLink = {
                         _type: 'project.post',
                         slug: project.project?.slug.current,
+                        language: project.project?.language,
                     };
 
                     return (
                         <div className="flex flex-wrap pt-red -mx-4" key={project.project?._id}>
                             {project.images?.[0] && (
                                 <div className="w-full md:w-6/12 px-4">
-                                    <Link href={`./projects/${project.project?.slug.current}`}>
+                                    <Link href={`./${project.project?.language}/projects/${project.project?.slug.current}`}>
                                         <ImageWithBlur
                                             image={project.images[0]}
                                             sizes="(max-width: 768px) 100vw , 50vw"
@@ -39,7 +38,7 @@ export default async function FeaturedProjects(section: Section.FeaturedProjects
                             {project.images?.[1] && (
                                 <div className="w-full md:w-6/12 hidden md:flex px-4">
                                     <Link
-                                        href={`./projects/${project.project?.slug.current}`}
+                                        href={`./${project.project?.language}/projects/${project.project?.slug.current}`}
                                         className="hidden md:block"
                                     >
                                         <ImageWithBlur

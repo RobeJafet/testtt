@@ -1,5 +1,5 @@
 import { locales } from "@/i18n/i18n-config";
-import { fetchSanityHeader, fetchSanityFooter } from "@/sanity/sevices/fetchSettings";
+import { fetchSanityHeader, fetchSanityFooter, fetchTranslations } from "@/sanity/sevices/fetchSettings";
 import Header from "@/components/components/Header";
 import Footer from "@/components/components/Footer";
 
@@ -18,10 +18,12 @@ export default async function MainLayout({
   const {lang} = await params;
   const navigation = await fetchSanityHeader(lang);
   const footer = await fetchSanityFooter(lang);
+  const translations = await fetchTranslations();
+
 
   return (
     <>
-      <Header navigation={navigation} lang={lang} />
+      <Header navigation={navigation} lang={lang} translations={translations} />
       {children}
       {
         footer && (

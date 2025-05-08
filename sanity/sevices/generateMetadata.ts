@@ -14,7 +14,7 @@ export function generatePageMetadata({
 }) {
 
   return {
-    title: page?.meta_title || page?.title,
+    title: page?.meta_title || page?.title || "Studio Test",
     description: page?.meta_description,
     openGraph: {
       images: [

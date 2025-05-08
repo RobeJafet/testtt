@@ -21,7 +21,8 @@ export const POST_QUERY = groq`
       linkType == 'page' => {
         "page": page->{
           _type,
-          "slug": slug.current
+          "slug": slug.current,
+          language
         }
       }
     },
