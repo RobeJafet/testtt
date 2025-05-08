@@ -198,7 +198,13 @@ export default defineType({
   preview: {
     select: {
       title: "title",
-      subtitle: "client.name",
+      lang: "language", // Assuming you have a `language` field in your schema
+    },
+    prepare(selection) {
+      const { title, lang } = selection;
+      return {
+        title: `${title} (${lang})`,
+      };
     },
   },
 });
