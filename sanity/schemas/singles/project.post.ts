@@ -203,7 +203,7 @@ export default defineType({
     prepare(selection) {
       const { title, lang } = selection;
       return {
-        title: `${title} (${lang})`,
+        title: `${title} (${lang.toUpperCase()})`,
       };
     },
   },
