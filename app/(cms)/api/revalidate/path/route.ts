@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
 
     revalidatePath(body.path)
     const message = `Updated route: ${body.path}`
-    console.log(message)
     return NextResponse.json({ body, message })
   } catch (err) {
     console.error(err)

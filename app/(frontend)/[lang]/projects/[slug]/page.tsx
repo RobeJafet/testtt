@@ -3,13 +3,15 @@ import  SingleLink  from '@/components/components/SingleLink';
 import ImageWithBlur from '@/components/components/ImageWithBlur';
 import { getDictionary } from '../../../[lang]/dictionaries'
 import { generatePageMetadata } from "@/sanity/sevices/generateMetadata";
+import { notFound } from 'next/navigation';
+
+
 
 
 export async function generateStaticParams() {
     const slugs = await fetchSanityPostSlugs();
     return slugs;
 }
-export const dynamicParams = false;
 
 type ParamsMetadata = Promise<{ lang: LocalePage; slug: string }>
 
@@ -18,12 +20,18 @@ export async function generateMetadata(props: {params: ParamsMetadata}) {
     const { lang, slug } =  paramsMetadata; 
     const post = await fetchSanityPostBySlug(slug, lang);
     return generatePageMetadata({ page: post, slug, locale: lang });
+
 }
 
 
 export default async function Post({params}: {params: ParamsMetadata}) {
     const { slug, lang } = await params;
     const post = await fetchSanityPostBySlug( slug, lang);
+
+    if (!post) {
+        notFound();
+    }
+    
     const dict = await getDictionary(lang)
 
     return (

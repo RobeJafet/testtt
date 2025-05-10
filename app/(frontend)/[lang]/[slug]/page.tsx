@@ -6,7 +6,6 @@ import { generatePageMetadata } from "@/sanity/sevices/generateMetadata";
 type ParamsMetadata = Promise<{ lang: LocalePage; slug: string }>
 export const dynamicParams = false;
 
-
 export async function generateStaticParams() {
     const slugs = await fetchSanityPageSlugs();
     return slugs;
