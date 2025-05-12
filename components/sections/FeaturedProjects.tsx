@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import ImageWithBlur from '../components/ImageWithBlur';
 import SingleLink from '../components/SingleLink';
 

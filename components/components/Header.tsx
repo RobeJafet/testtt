@@ -1,4 +1,3 @@
-import Link from "next/link";
 import SingleLink from "./SingleLink";
 import LangChangeHandler from "./LangChangeHandler";
 

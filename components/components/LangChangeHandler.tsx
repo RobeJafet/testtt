@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { locales } from "@/i18n/i18n-config";
 import { usePathname } from "next/navigation";
 import { TransitionLink } from "./TransitionLink";

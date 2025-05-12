@@ -2,7 +2,6 @@ import { locales } from "@/i18n/i18n-config";
 import { fetchSanityHeader, fetchSanityFooter, fetchTranslations } from "@/sanity/sevices/fetchSettings";
 import Header from "@/components/components/Header";
 import Footer from "@/components/components/Footer";
-import { PageTransitionLoader } from "@/components/components/PageTransitionLoader";
 import { PageTransitionHandler } from "@/components/components/PageTransitionHandler";
 
 export async function generateStaticParams() {
