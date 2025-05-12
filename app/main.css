@@ -12,6 +12,35 @@
     --color-white: #F4F2F0;
 }
 
+
+body.page-transition{
+    cursor: wait !important;
+}
+.main{
+    transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
+}
+.main.page-transition {
+   opacity: 0;
+}
+
+#page-loader {
+    transition: opacity 0.4s ease;
+  }
+  
+#page-loader.visible {
+opacity: 1;
+pointer-events: all;
+}
+
+#page-loader:not(.visible) {
+opacity: 0;
+pointer-events: none;
+}
+
+body.loading{
+    cursor: wait;
+}
+
 h1, .h1{
     font-size: 19px;
     font-family: var(--font-forma-medium), sans-serif;

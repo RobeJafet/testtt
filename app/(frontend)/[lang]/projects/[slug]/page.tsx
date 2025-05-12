@@ -4,8 +4,7 @@ import ImageWithBlur from '@/components/components/ImageWithBlur';
 import { getDictionary } from '../../../[lang]/dictionaries'
 import { generatePageMetadata } from "@/sanity/sevices/generateMetadata";
 import { notFound } from 'next/navigation';
-
-
+import { PageTransitionLoader } from "@/components/components/PageTransitionLoader";
 
 
 export async function generateStaticParams() {
@@ -20,7 +19,6 @@ export async function generateMetadata(props: {params: ParamsMetadata}) {
     const { lang, slug } =  paramsMetadata; 
     const post = await fetchSanityPostBySlug(slug, lang);
     return generatePageMetadata({ page: post, slug, locale: lang });
-
 }
 
 
@@ -31,11 +29,12 @@ export default async function Post({params}: {params: ParamsMetadata}) {
     if (!post) {
         notFound();
     }
-    
+
     const dict = await getDictionary(lang)
 
     return (
-        <div>
+        <div className='main'>
+            <PageTransitionLoader />
             <div className="container pt-[36px] md:pt-[45px] lg:pt-[52px]">
                 <div className="flex -mx-4 flex-wrap pt-green">
                     {post.title && post.excerpt && (

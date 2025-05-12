@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { TransitionLink } from './TransitionLink';
+
 
 export default function SingleLink({
   href,
@@ -87,11 +89,11 @@ export default function SingleLink({
 
   if (linkType === 'page') {
     if (page?._type === 'home') {
-      return <Link href={`/${page?.language}`} className={linkClass}>{children}</Link>
+      return <TransitionLink href={`/${page?.language}`} className={linkClass}>{children}</TransitionLink>
     } else if (page?._type === 'project.post') {
-      return <Link href={`${page?.language}/projects/${page?.slug}`} className={linkClass}>{children}</Link>
+      return <TransitionLink href={`${page?.language}/projects/${page?.slug}`} className={linkClass}>{children}</TransitionLink>
     } else {
-      return <Link href={`${page?.language}/${page?.slug}`} className={linkClass}>{children}</Link>
+      return <TransitionLink href={`${page?.language}/${page?.slug}`} className={linkClass}>{children}</TransitionLink>
     }
   }
 

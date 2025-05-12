@@ -7,9 +7,13 @@ export default function Header({navigation, lang, translations}: {navigation: Sa
         <header className="mix-blend-difference fixed top-0 w-full z-10">
             <div className="container">
                 <div className="flex pt-6 md:pt-8 justify-between items-center text-white">
-                    <Link href={`/${lang}`}>
+                    <SingleLink
+                        page={{_type: 'home', slug: '', language: lang}}
+                        linkType={'page'}
+                        openInNewTab={false}
+                    >
                         <h1 className="text-white">Studio Test</h1>
-                    </Link>
+                    </SingleLink>
                     <div className="flex gap-8">
                         {
                             navigation?.map((navItem, index) => (

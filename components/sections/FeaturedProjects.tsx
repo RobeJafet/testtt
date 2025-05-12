@@ -26,27 +26,33 @@ export default async function FeaturedProjects(section: Section.FeaturedProjects
                         <div className="flex flex-wrap pt-red -mx-4" key={project.project?._id}>
                             {project.images?.[0] && (
                                 <div className="w-full md:w-6/12 px-4">
-                                    <Link href={`./${project.project?.language}/projects/${project.project?.slug.current}`}>
+                                    <SingleLink
+                                        page={projectPage}
+                                        linkType={'page'}
+                                        openInNewTab={false}
+                                        >
                                         <ImageWithBlur
-                                            image={project.images[0]}
-                                            sizes="(max-width: 768px) 100vw , 50vw"
-                                            optionalAlt="Img Project"
+                                        image={project.images[0]}
+                                        sizes="(max-width: 768px) 100vw , 50vw"
+                                        optionalAlt="Img Project"
                                         />
-                                    </Link>
+
+                                    </SingleLink>
                                 </div>
                             )}
                             {project.images?.[1] && (
                                 <div className="w-full md:w-6/12 hidden md:flex px-4">
-                                    <Link
-                                        href={`./${project.project?.language}/projects/${project.project?.slug.current}`}
-                                        className="hidden md:block"
-                                    >
+                                     <SingleLink
+                                        page={projectPage}
+                                        linkType={'page'}
+                                        openInNewTab={false}
+                                        >
                                         <ImageWithBlur
                                             image={project.images[1]}
                                             sizes="(max-width: 768px) 100vw , 50vw"
                                             optionalAlt="Img Project"
                                         />
-                                    </Link>
+                                    </SingleLink>
                                 </div>
                             )}
 

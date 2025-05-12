@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { locales } from "@/i18n/i18n-config";
 import { usePathname } from "next/navigation";
+import { TransitionLink } from "./TransitionLink";
 
 export default function LangChangeHandler({
   lang,
@@ -51,9 +52,9 @@ export default function LangChangeHandler({
 
   return (
     <>
-      <Link href={`${newRoute}`}>
+      <TransitionLink href={`${newRoute}`}>
         [{otherLocale === "es" ? "esp" : "en"}]
-      </Link>
+      </TransitionLink>
     </>
   );
 }
