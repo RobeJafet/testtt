@@ -49,9 +49,9 @@ export default function Hero(section: Section.HeroProps) {
         <section>
             <div className="container pt-header">
                 {section.principal_text && (
-                    <div className="flex pt-yellow lg:pt-8">
-                        <div className="w-2/12 hidden lg:block"></div>
-                        <div className="w-full md:w-7/12 lg:w-4/12">
+                    <div className="flex pt-yellow lg:pt-8 -mx-4">
+                        <div className="w-2/12 hidden lg:block px-4"></div>
+                        <div className="w-full md:w-7/12 lg:w-4/12 px-4">
                             <p>{section.principal_text}</p>
                         </div>
                     </div>

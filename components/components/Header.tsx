@@ -11,7 +11,9 @@ export default function Header({navigation, lang, translations}: {navigation: Sa
                         linkType={'page'}
                         openInNewTab={false}
                     >
-                        <h1 className="text-white">Studio Test</h1>
+                        <h1 className="text-white logo-header">
+                            Studio Test
+                        </h1>
                     </SingleLink>
                     <div className="flex gap-8">
                         {

@@ -66,13 +66,9 @@ export default function SingleLink({
 
     elements.forEach((el) => {
       originals.set(el, el.textContent || '');
-
-      
-    el.addEventListener('mouseenter', startScrambleHandler);
-    el.addEventListener('mouseleave', stopScrambleHandler);
-
-      // Cleanup cuando cambie la ruta
-      el.dataset.scrambleListenersAttached = 'true'; // Evitar duplicados
+      el.addEventListener('mouseenter', startScrambleHandler);
+      el.addEventListener('mouseleave', stopScrambleHandler);
+      el.dataset.scrambleListenersAttached = 'true'; 
     });
 
     return () => {

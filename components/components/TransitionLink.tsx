@@ -27,7 +27,6 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
     const hrefString = href.toString();
 
     if (pathname === hrefString) {
-      // Mismo path, no hacer nada
       e.preventDefault();
       return;
     }
@@ -38,9 +37,34 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
     overlay?.classList.add("visible");
     body.classList.add("loading");
 
+    const elements = document.querySelectorAll<HTMLElement>(".logo-header");
+
+    startScramble(elements[0]);
+
     await sleep(300);
     router.push(hrefString);
   };
+
+
+  function shuffleString(str: string): string {
+    const arr = str.split('');
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr.join('');
+  }
+
+  function startScramble(el: HTMLElement) {
+    const originalText = el.getAttribute('data-original-text') || el.textContent || '';
+    el.setAttribute('data-original-text', originalText);
+    el.textContent = shuffleString(originalText);
+  
+    const interval = setInterval(() => {
+      el.textContent = shuffleString(originalText);
+    }, 200);
+    el.dataset.intervalId = interval.toString();
+  }
 
   return (
     <Link href={href.toString()} onClick={handleClick} className={className} {...props}>

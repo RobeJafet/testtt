@@ -5,9 +5,7 @@ import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
 function getLocale(request: NextRequest): string | undefined {
-
   const nextLocaleCookie = request.cookies ? request.cookies.get('NEXT_LOCALE') : null;
-
 
   if (nextLocaleCookie) {
     const langCookie = nextLocaleCookie.value;
@@ -25,13 +23,19 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export function middleware(request: NextRequest) {
-
   const pathname = request.nextUrl.pathname;
+
+  // Redirect /intent/edit/mode=presentation to /studio/edit/mode
+  if (pathname.startsWith("/intent/edit/mode=presentation")) {
+    const newUrl = new URL(request.url);
+    newUrl.pathname = pathname.replace("/intent/edit/mode=presentation", "/studio/presentation/");
+    return NextResponse.redirect(newUrl);
+  }
 
   if (pathname.startsWith("/api")) {
     return NextResponse.next();
   }
-  
+
   const pathnameIsMissingLocale = locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
@@ -54,5 +58,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api/|api$|_next/|favicon.ico|studio|assets/).*)"]
+  matcher: [
+    "/((?!api/|api$|_next/|favicon.ico|studio|assets/).*)"
+  ]
 };
