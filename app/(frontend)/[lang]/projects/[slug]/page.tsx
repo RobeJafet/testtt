@@ -5,6 +5,8 @@ import { getDictionary } from '../../../[lang]/dictionaries'
 import { generatePageMetadata } from "@/sanity/sevices/generateMetadata";
 import { notFound } from 'next/navigation';
 import { PageTransitionLoader } from "@/components/components/PageTransitionLoader";
+import AnimatedOnView from '@/components/components/AnimatedOnView';
+import AnimatedScrambleOnView from '@/components/components/ScrambleOnView';
 
 
 export async function generateStaticParams() {
@@ -128,12 +130,15 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                             <div
                                                 key={image.asset._id}
                                                 className="w-full px-4"
-                                            >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="100vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                            >   
+                                                <AnimatedOnView className='w-full fade-in' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="100vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                                
                                             </div>
                                         );
                                     } else if ((i + 1) % 3 === 2) {
@@ -142,11 +147,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id}
                                                 className="w-full md:w-7/12 px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="(max-width: 768px) 100vw, 75vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in ' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="(max-width: 768px) 100vw, 75vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                                
                                             </div>
                                         );
                                     } else if ((i + 1) % 3 === 0) {
@@ -155,11 +163,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id}
                                                 className="w-full md:w-5/12 px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in delay-md' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                                
                                             </div>
                                         );
                                     }
@@ -176,14 +187,19 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                         <div className="flex -mx-4 flex-wrap justify-center">
                             {post.context_title && (
                                 <div className="w-full px-4">
-                                    <p>{dict.project.context}</p>
-                                    <p className="pt-blue h1">{post.context_title}</p>
+                                    <AnimatedScrambleOnView>
+                                        <p className='scramble-on-view'>{dict.project.context}</p>
+                                    </AnimatedScrambleOnView>
+                                    <AnimatedOnView targetSelector='.fade-in' className='fade-in'>
+                                        <p className="pt-blue h1">{post.context_title}</p>
+                                    </AnimatedOnView>
+                                    
                                 </div>
                             )}
                             {post.context_description && (
-                                <div className="w-10/12 md:w-8/12 lg:w-5/12 pt-red px-4">
+                                <AnimatedOnView targetSelector='.fade-in' className='w-10/12 md:w-8/12 lg:w-5/12 pt-red px-4 fade-in'>
                                     <p>{post.context_description}</p>
-                                </div>
+                                </AnimatedOnView>
                             )}
                         </div>
                     </div>
@@ -202,11 +218,15 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id + i}
                                                 className="w-full px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="100vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="100vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+
+                                               
                                             </div>
                                         );
                                     } else if ((i + 1) % 6 === 2) {
@@ -216,11 +236,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id + i}
                                                 className="w-full md:w-5/12 px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                               
                                             </div>
                                         );
                                     } else if ((i + 1) % 6 === 3) {
@@ -230,11 +253,13 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id + i}
                                                 className="w-full md:w-7/12 px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="(max-width: 768px) 100vw, 75vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in delay-md' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="(max-width: 768px) 100vw, 75vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
                                             </div>
                                         );
                                     }
@@ -245,11 +270,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id + i}
                                                 className="w-full px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="100vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="100vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                                
                                             </div>
                                         );
                                     }
@@ -260,11 +288,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id + i}
                                                 className="w-full md:w-7/12 px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="(max-width: 768px) 100vw, 75vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="(max-width: 768px) 100vw, 75vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                                
                                             </div>
                                         );
                                     }
@@ -275,11 +306,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                                                 key={image.asset._id + i}
                                                 className="w-full md:w-5/12 px-4"
                                             >
-                                                <ImageWithBlur
-                                                    image={image}
-                                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                                    optionalAlt="Img Project"
-                                                />
+                                                <AnimatedOnView className='w-full fade-in delay-md' targetSelector='.fade-in'>
+                                                    <ImageWithBlur
+                                                        image={image}
+                                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                                        optionalAlt="Img Project"
+                                                    />
+                                                </AnimatedOnView>
+                                                
                                             </div>
                                         );
                                     }
