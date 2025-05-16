@@ -26,7 +26,9 @@ export default async function MainLayout({
     <>
       <Header navigation={navigation} lang={lang} translations={translations} />
       <PageTransitionHandler />
-      {children}
+      <main className="bg-white text-black">
+        {children}
+      </main>
       {
         footer && (
           <Footer footer={footer} />

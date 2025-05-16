@@ -17,7 +17,7 @@ export default function Studio(section: Section.StudioProps) {
                             </AnimatedScrambleOnView>
                            
                             <div className="md:w-10/12 lg:w-full px-4 fade-in">
-                                <h1 className='pt-1 md:pt-6 lg:pt-2'>{section.title}</h1>
+                                <h3 className='pt-1 md:pt-6 lg:pt-2 h1'>{section.title}</h3>
                             </div>
                             <div className="w-2/12 hidden md:block lg:hidden px-4"></div>
                             <div className="w-full md:w-9/12 lg:w-full px-4 fade-in">

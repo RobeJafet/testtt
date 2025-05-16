@@ -3,13 +3,13 @@ import SingleLink from './SingleLink';
 
 export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
     return (
-        <footer className="pt-pink pb-red">
+        <footer className="pt-pink pb-red bg-white text-black">
             <div className="container">
                 <div className="bg-black h-[1px] w-full opacity-30"></div>
                 <div className="flex -mx-4 flex-wrap pt-red">
                     <div className="w-full md:w-5/12 lg:w-6/12 px-4 pb-14 md:pb-0">
                         <Link href="./">
-                            <h1>Studio Test</h1>
+                            <p className='h1'>Studio Test</p>
                         </Link>
                         <p>2024 Studio Test</p>
                     </div>

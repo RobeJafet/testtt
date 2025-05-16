@@ -35,14 +35,14 @@ export default async function Post({params}: {params: ParamsMetadata}) {
     const dict = await getDictionary(lang)
 
     return (
-        <div className='main'>
+        <>
             <PageTransitionLoader />
             <div className="container pt-[36px] md:pt-[45px] lg:pt-[52px]">
                 <div className="flex -mx-4 flex-wrap pt-green">
                     {post.title && post.excerpt && (
                         <div className="w-full lg:w-7/12 px-4 lg:order-1">
-                            <p>{post.title}</p>
-                            <h1 className="pt-blue">{post.excerpt}</h1>
+                            <h2>{post.title}</h2>
+                            <h3 className="pt-blue h1">{post.excerpt}</h3>
                         </div>
                     )}
                     <div className="w-2/12 md:w-4/12 lg:w-1/12 px-4 lg:order-2"></div>
@@ -188,10 +188,10 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                             {post.context_title && (
                                 <div className="w-full px-4">
                                     <AnimatedScrambleOnView>
-                                        <p className='scramble-on-view'>{dict.project.context}</p>
+                                        <h2 className='scramble-on-view'>{dict.project.context}</h2>
                                     </AnimatedScrambleOnView>
                                     <AnimatedOnView targetSelector='.fade-in' className='fade-in'>
-                                        <p className="pt-blue h1">{post.context_title}</p>
+                                        <h3 className="pt-blue h1">{post.context_title}</h3>
                                     </AnimatedOnView>
                                     
                                 </div>
@@ -325,7 +325,7 @@ export default async function Post({params}: {params: ParamsMetadata}) {
                 )
             }
            
-        </div>
+        </>
         
     );
 }

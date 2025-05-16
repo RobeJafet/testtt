@@ -11,10 +11,10 @@ export default function Services(section: Section.ServicesProps) {
                         <h2 className="scramble-on-view">{section.heading}</h2>
                     </AnimatedScrambleOnView>
 
-                    <AnimatedOnView className="fade-in w-full lg:w-9/12 px-4 pt-blue lg:pt-0" targetSelector=".fade-in">
-                        <p className="h1">
+                    <AnimatedOnView className="fade-in w-full lg:w-9/12 px-4 pt-blue lg:!pt-0" targetSelector=".fade-in">
+                        <h3 className="h1">
                             {section.title}
-                        </p>
+                        </h3>
                     </AnimatedOnView>
                    
                 </div>
@@ -27,7 +27,7 @@ export default function Services(section: Section.ServicesProps) {
                                 section.allServices.map((service: Sanity.Service) => (
                                     <div className="w-10/12 md:w-6/12 px-4 ml-auto md:ml-0" key={service._key}>
                                         <AnimatedScrambleOnView className="w-full">
-                                            <p className="scramble-on-view">{service.title}</p>
+                                            <h4 className="scramble-on-view">{service.title}</h4>
                                         </AnimatedScrambleOnView>
                                         <AnimatedOnView className="w-full fade-in" targetSelector=".fade-in">
                                             <ul className="pt-cyan">

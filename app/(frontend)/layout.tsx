@@ -27,7 +27,7 @@ export default async function FrontendLayout({
 
   const { isEnabled: isDraftMode } = await draftMode();
   return (
-    <main className={`${myFont2.variable} ${myFont.variable} antialiased bg-white text-black`}>
+    <body className={`${myFont2.variable} ${myFont.variable} antialiased bg-white text-black`}>
       {children}
       <Toaster />
         {isDraftMode && (
@@ -37,6 +37,6 @@ export default async function FrontendLayout({
           </>
         )}
       <SanityLive />
-    </main>
+    </body>
   );
 }

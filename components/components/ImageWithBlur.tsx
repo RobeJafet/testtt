@@ -20,7 +20,7 @@ export default function ImageWithBlur({ ...props  }: ImageWithBlurProps ) {
     const base64Image = blurHashToDataURL(blurhash);
 
     return (
-        <div className="relative w-full bg-cover bg-black bg-no-repeat" style={{ aspectRatio: width / height, backgroundImage: `url(${base64Image})` }}>
+        <picture className="relative w-full bg-cover bg-black bg-no-repeat block" style={{ aspectRatio: width / height, backgroundImage: `url(${base64Image})` }}>
             <Image
             src={urlFor(image).url()}
             width={width}
@@ -33,7 +33,7 @@ export default function ImageWithBlur({ ...props  }: ImageWithBlurProps ) {
                 e.currentTarget.classList.remove("opacity-0");
             }}
             />
-        </div>
+        </picture>
         
     );
 }

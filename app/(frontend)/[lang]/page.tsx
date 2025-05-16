@@ -13,9 +13,9 @@ export default async function Home({params} : {params: Promise<{ lang: LocalePag
     const {lang} = await params;
     const page = await fetchSanityHome( lang );
     return (
-        <div className="main">
+        <>
             <PageTransitionLoader />
             <Sections sections={page?.sections} />
-        </div>
+        </>
     )
 }

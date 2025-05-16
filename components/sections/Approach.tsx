@@ -17,7 +17,7 @@ export default function Approach(section: Section.ApproachProps) {
                             <div className="md:w-1/12 lg:hidden"></div>
                             <AnimatedScrambleOnView className="md:w-7/12 lg:w-8/12 px-4">
                                 <h2 className="scramble-on-view">{section.heading}</h2>
-                                <h1 className="pt-blue fade-in delay-lg">{section.title}</h1>
+                                <h3 className="pt-blue fade-in delay-lg h1">{section.title}</h3>
                             </AnimatedScrambleOnView>
                             
                             <div className="md:w-10/12 px-4 flex flex-col mx-auto lg:mx-0">
