@@ -31,7 +31,7 @@ export default async function MainLayout({
       </main>
       {
         footer && (
-          <Footer footer={footer} />
+          <Footer footer={footer} lang={lang} />
         )
       }
     </>

@@ -26,15 +26,28 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
   ) => {
     const hrefString = href.toString();
 
-    if (pathname === hrefString) {
-      e.preventDefault();
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) {
       return;
     }
 
+    if (pathname === hrefString) {
+      e.preventDefault();
+      
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    
+      return;
+    }
     e.preventDefault();
     const overlay = document.getElementById("page-loader");
     const body = document.body;
+    const header = document.querySelector("header");
+
+
     overlay?.classList.add("visible");
+    header?.classList.add("no-touch");
     body.classList.add("loading");
 
     const elements = document.querySelectorAll<HTMLElement>(".logo-header");

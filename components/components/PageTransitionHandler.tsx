@@ -20,6 +20,7 @@ export function PageTransitionHandler() {
     const overlay = document.getElementById('page-loader');
     const body = document.body;
     const headerLogo = document.querySelector<HTMLElement>('.logo-header');
+    const header = document.querySelector('header');
 
     if (headerLogo) {
       stopScramble(headerLogo);
@@ -29,6 +30,7 @@ export function PageTransitionHandler() {
 
     overlay.classList.remove('visible');
     body.classList.remove('loading');
+    header?.classList.remove('no-touch');
 
   }, [pathname]); // se dispara en cada ruta nueva
 

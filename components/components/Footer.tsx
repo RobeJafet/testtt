@@ -1,16 +1,20 @@
 import Link from 'next/link';   
 import SingleLink from './SingleLink';
 
-export default function Footer({footer}: {footer:Sanity.FooterNavigation}) {
+export default function Footer({footer, lang}: {footer:Sanity.FooterNavigation, lang: LocalePage}): React.ReactNode  {
     return (
         <footer className="pt-pink pb-red bg-white text-black">
             <div className="container">
                 <div className="bg-black h-[1px] w-full opacity-30"></div>
                 <div className="flex -mx-4 flex-wrap pt-red">
-                    <div className="w-full md:w-5/12 lg:w-6/12 px-4 pb-14 md:pb-0">
-                        <Link href="./">
-                            <p className='h1'>Studio Test</p>
-                        </Link>
+                    <div className="w-full md:w-5/12 lg:w-6/12 px-4 pb-14 md:pb-0 flex flex-col items-start">
+                        <SingleLink
+                            page={{_type: 'home', slug: '', language: lang}}
+                            linkType={'page'}
+                            openInNewTab={false}
+                        >
+                           <p className='h1'>Studio Test</p>
+                        </SingleLink>
                         <p>2024 Studio Test</p>
                     </div>
                     <div className="w-6/12 md:w-3/12 lg:w-3/12 flex flex-col px-4 md:pt-2 items-start">
