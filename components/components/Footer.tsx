@@ -1,4 +1,3 @@
-import Link from 'next/link';   
 import SingleLink from './SingleLink';
 
 export default function Footer({footer, lang}: {footer:Sanity.FooterNavigation, lang: LocalePage}): React.ReactNode  {
