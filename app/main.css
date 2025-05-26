@@ -242,9 +242,13 @@ body{
     border-radius: 5px;
 }
 
-.scramble-hover {
-    white-space: pre;
+@media (min-width: 993px) {
+    .scramble-hover {
+        white-space: pre;
+    }
 }
+
+
 
 .fade-in{
     opacity: 0;
